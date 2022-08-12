@@ -69,8 +69,9 @@ func Test_deleteDuplicates(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			list := createList(tt.nodes)
 			got := deleteDuplicates(list)
-			if countVal(got, tt.val) != tt.wantCount {
-				t.Errorf("after deleteDuplicates countVal(list, %d)=%d, want %d", tt.val, countVal(list, tt.val), tt.wantCount)
+			count := countVal(got, tt.val)
+			if count != tt.wantCount {
+				t.Errorf("после удаления дубликатов подсчет количества числа %d показал %d, а требуется %d", tt.val, count, tt.wantCount)
 			}
 		})
 	}
