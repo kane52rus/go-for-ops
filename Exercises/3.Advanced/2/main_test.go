@@ -68,8 +68,8 @@ func Test_deleteDuplicates(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			list := createList(tt.nodes)
-			deleteDuplicates(list)
-			if countVal(list, tt.val) != tt.wantCount {
+			got := deleteDuplicates(list)
+			if countVal(got, tt.val) != tt.wantCount {
 				t.Errorf("after deleteDuplicates countVal(list, %d)=%d, want %d", tt.val, countVal(list, tt.val), tt.wantCount)
 			}
 		})
