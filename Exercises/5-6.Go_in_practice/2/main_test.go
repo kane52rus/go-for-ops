@@ -68,11 +68,13 @@ func (ds *dummyServer) Dummy(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/health" {
 		w.WriteHeader(http.StatusNotFound)
 		io.WriteString(w, `allowed only health`)
+		return
 	}
 	//
 	if r.Method != http.MethodGet {
 		w.WriteHeader(http.StatusMethodNotAllowed)
 		io.WriteString(w, `allowed only GET`)
+		return
 	}
 	//
 
