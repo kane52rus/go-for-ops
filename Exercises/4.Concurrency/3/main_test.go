@@ -7,6 +7,8 @@ import (
 	"time"
 )
 
+const pauseForEndRealMain = time.Millisecond * 50
+
 func Test_realMain(t *testing.T) {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
@@ -30,19 +32,24 @@ func Test_realMain(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
+			goForRealMain := 1 // +1 на саму realMain
+			if tt.n == 0 {
+				goForRealMain = 0 // realMain ничего не запускает и сама завершается
+			}
 			before := runtime.NumGoroutine()
 			go realMain(ctx, tt.n)
 			time.Sleep(time.Millisecond * 250)
 
 			inTime := runtime.NumGoroutine()
 
-			time.Sleep(timeout)
+			time.Sleep(timeout + pauseForEndRealMain)
 			after := runtime.NumGoroutine()
 
 			// проверяем, что realMain запустила n горутин
-			if inTime != before+tt.n+1 { // +1 на саму realMain
-				t.Errorf("realMain start %d goroutine, want %d", inTime, before+tt.n+1)
+			if inTime != before+tt.n+goForRealMain {
+				t.Errorf("realMain start %d goroutine(s), want %d", inTime-(before+goForRealMain), tt.n)
 			}
+
 			// проверяем, что после завершения realMain все горутины тоже завершились
 			if after != before {
 				t.Errorf("after realMain end %d goroutine, want %d", after, before)
@@ -50,3 +57,4 @@ func Test_realMain(t *testing.T) {
 		})
 	}
 }
+
