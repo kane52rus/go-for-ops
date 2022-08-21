@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-// в этом тесте проверяется только соответсвие результату
+// в этом тесте проверяется только соответствие результату
 // запуск горутин будет проверяться в ревью
 func Test_realMain(t *testing.T) {
 	tests := []struct {
@@ -44,7 +44,7 @@ func Test_realMain(t *testing.T) {
 				realMain(tt.a, tt.b, &c)
 			}()
 			wg.Wait()
-			
+
 			if !reflect.DeepEqual(tt.want, c) {
 				t.Errorf("realMain() c = %v, want %v", c, tt.want)
 			}

@@ -40,7 +40,7 @@ func Test_createList(t *testing.T) {
 				return
 			}
 
-			if eq, reason := checkVal(got, tt.sl); !eq {
+			if eq, reason := compareListWithSlice(got, tt.sl); !eq {
 				t.Errorf("createList made incorrect list, reason %s", reason)
 			}
 		})
@@ -110,8 +110,9 @@ func length(head *ListNode) int {
 	return res
 }
 
-// checkVal returns flag of equal values in listNode and slice []int.
-func checkVal(head *ListNode, sl []int) (bool, string) {
+// compareListWithSlice returns flag of equal values in listNode and slice []ini
+// and if not equal returns difference.
+func compareListWithSlice(head *ListNode, sl []int) (bool, string) {
 	lenSL := len(sl)
 	lenHead := length(head)
 	if lenSL != lenHead {
