@@ -157,7 +157,7 @@ hw:7.3-build:
   script:
     - echo build app
     - go build -o testbox Exercises/7.Docker/3/cmd/testbox/main.go
-    - mkdir bin
+    - mkdir bin || true
     - cp testbox bin/testbox
   artifacts:
     paths:

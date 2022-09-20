@@ -1,11 +1,11 @@
-containerName: container4test     # наименование docker контейнера при тестировании
+containerName: container4test-<Ваш номер студента>     # наименование docker контейнера при тестировании
 environment:                      # массив переменных окружения, передаваемых в docker контейнер
   - DEBUG=1
   - DB=${someapi:network_address}  # формат записи ${db:network_address} означае получение параметра из зависимого docker контейнера с именем db, параметр network_address
 
 dockerfile: "./Exercises/7.Docker/3/configs/dockerfile4test"      # имя dockerfile-a
 dependencies:                 # массив зависимостей в виде параметров для запуска docker контейнеров
-  - name: someapi             # наименование docker контейнера зависимости
+  - name: someapi-<Ваш номер студента>            # наименование docker контейнера зависимости
     environment:              # массив переменных окружения, передаваемых в docker контейнер зависимости
       - DEBUG=1
     image: registry.gitlab.com/art.frela/simplestapi:v1.0.0          # имя docker образа, для запуска зависимости
