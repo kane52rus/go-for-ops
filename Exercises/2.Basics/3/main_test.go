@@ -60,7 +60,7 @@ func Test_stringStat(t *testing.T) {
 й - 1
 ч - 1
 ю - 1`,
-		},,
+		},
 		{"Finishh", `f - 1
 i - 2
 n - 1
