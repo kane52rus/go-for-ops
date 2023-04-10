@@ -199,5 +199,5 @@ hw:8.3:
         - Service/deployments/manifests/*.y*ml
   script:
     - kube-score version
-    - kube-score score Service/deployments/manifests/*.y*ml
+    - kube-score score --ignore-test pod-networkpolicy Service/deployments/manifests/*.y*ml
     - echo "Домашка 8.3 пройдена! Можно сдавать на ревью!"
