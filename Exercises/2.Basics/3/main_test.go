@@ -61,26 +61,26 @@ func Test_stringStat(t *testing.T) {
 ч - 1
 ю - 1`,
 		},
-		{"Finishh", `f - 1
+		{"FinishEN", "Finishh", `f - 1
 i - 2
 n - 1
 s - 1
 h - 2`},
 		{
-			"", "",
+			"Empty", "", "",
 		},
 		{
-			"Bitiş", `b - 1
+			"FinishTR", "Bitiş", `b - 1
 i - 2
 t - 1
 ş - 1`,
 		},
 		{
-			"終了", `終 - 1
+			"FinishJA", "終了", `終 - 1
 了 - 1`,
 		},
 		{
-			"إنهاء", `إ - 1
+			"FinishArabic", "إنهاء", `إ - 1
 ن - 1
 ه - 1
 ا - 1
