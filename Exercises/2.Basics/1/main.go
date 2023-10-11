@@ -8,6 +8,16 @@ func main() {
 }
 
 func doubleDetector(nums []int) bool {
-	// TODO: код писать здесь
+	for _, v := range nums {
+		var count int
+		for _, n := range nums {
+			if v == n {
+				count++
+			}
+			if count >= 2 {
+				return true
+			}
+		}
+	}
 	return false
 }
